@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://0sxg1xod8ndv"]
+[gd_scene load_steps=2 format=3 uid="uid://0sxg1xod8ndv"]
+
+[ext_resource type="Script" path="res://src/Scenes/start_screen.gd" id="1_e1qkf"]
 
 [node name="StartScreen" type="Control"]
 layout_mode = 3
@@ -7,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_e1qkf")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -40,3 +43,5 @@ anchor_right = 0.6
 anchor_bottom = 0.7
 theme_override_font_sizes/font_size = 48
 text = "Play"
+
+[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
