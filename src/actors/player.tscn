@@ -40,6 +40,15 @@ collision_layer = 0
 position = Vector2(11, 327)
 shape = SubResource("RectangleShape2D_jrmdu")
 
+[node name="BathDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="BathCollisionShape2D" type="CollisionShape2D" parent="BathDetector"]
+position = Vector2(11, 327)
+shape = SubResource("RectangleShape2D_jrmdu")
+
 [connection signal="body_entered" from="BubbleDetector" to="." method="_on_bubble_detector_body_entered"]
 [connection signal="body_entered" from="DuckDetector" to="." method="_on_duck_detector_body_entered"]
 [connection signal="body_exited" from="DuckDetector" to="." method="_on_duck_detector_body_exited"]
+[connection signal="body_entered" from="BathDetector" to="." method="_on_bath_detector_body_entered"]

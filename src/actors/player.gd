@@ -52,3 +52,6 @@ func _on_duck_detector_body_entered(body: Node2D) -> void:
 
 func _on_duck_detector_body_exited(body: Node2D) -> void:
 	is_on_duck = false
+
+func _on_bath_detector_body_entered(body: Node2D) -> void:
+	GameData.emit_game_over()

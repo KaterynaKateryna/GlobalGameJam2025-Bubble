@@ -5,6 +5,8 @@ var rng = RandomNumberGenerator.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	GameData.game_over.connect(_on_game_over)
+	
 	GameData.score = 0;
 	
 	var camera = get_viewport().get_camera_2d()
@@ -45,4 +47,9 @@ func _get_random_modifier():
 	elif rand_modifier == 3:
 		modifier = "%2"
 	return modifier
+	
+func _on_game_over():
+	print("game over")
+	var game_over = get_node("GameOver")
+	game_over.show()
 	

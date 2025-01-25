@@ -11,8 +11,8 @@ func _ready() -> void:
 	var tween = get_tree().create_tween()
 
 	# Animate the position from current position to end_position over 3 seconds
-	tween.tween_property(self, "position", Vector2(position.x + 100, position.y), 3)
-	tween.chain().tween_property(self, "position", Vector2(position.x - 100, position.y), 3)
+	tween.tween_property(self, "position", Vector2(position.x + 200, position.y), 3)
+	tween.chain().tween_property(self, "position", Vector2(position.x - 200, position.y), 3)
 	tween.set_loops()
 
 func _process(delta):
