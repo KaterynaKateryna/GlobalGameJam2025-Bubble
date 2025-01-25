@@ -11,6 +11,7 @@ func _process(delta: float) -> void:
 	var viewport = get_viewport()
 	var screen_size = viewport.get_visible_rect().size
 	var camera = viewport.get_camera_2d()
+	var center = camera.get_screen_center_position()
 	if camera:
-		position.x = camera.global_position.x - size.x / 2
-		position.y = camera.global_position.y - size.y / 2
+		position.x = center.x - size.x / 2
+		position.y = center.y - size.y / 2

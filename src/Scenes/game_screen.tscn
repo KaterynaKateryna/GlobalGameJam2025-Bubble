@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://kdq04i8g2c7v" path="res://src/UI/game_over.tscn" id="2_t8bp6"]
 [ext_resource type="Texture2D" uid="uid://bt8w6qccwyptl" path="res://assets/images/Square_and_small.png" id="3_6g8is"]
 [ext_resource type="PackedScene" uid="uid://d2x68a7kijbdp" path="res://src/objects/duck.tscn" id="4_ebgfn"]
-[ext_resource type="Texture2D" uid="uid://nbjy57dvcy11" path="res://assets/images/Bathtub.png" id="6_wmb0x"]
+[ext_resource type="Texture2D" uid="uid://c8lenf1m4dv5r" path="res://assets/images/Bathtub_zoom.png" id="7_vii3g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mkgxw"]
 size = Vector2(1908, 46)
@@ -41,11 +41,11 @@ stretch_mode = 6
 script = ExtResource("2_pgld2")
 
 [node name="Duck" parent="." instance=ExtResource("4_ebgfn")]
-position = Vector2(890, 838)
+position = Vector2(944, 838)
 scale = Vector2(0.6, 0.6)
 
 [node name="Player" parent="." instance=ExtResource("2_13b6m")]
-position = Vector2(800, 844)
+position = Vector2(854, 844)
 scale = Vector2(0.3, 0.3)
 collision_mask = 13
 
@@ -54,12 +54,11 @@ collision_layer = 8
 collision_mask = 2
 
 [node name="BathSprite" type="Sprite2D" parent="Bath"]
-position = Vector2(992, 1071)
-scale = Vector2(2.164, 1)
-texture = ExtResource("6_wmb0x")
+position = Vector2(954, 657)
+texture = ExtResource("7_vii3g")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bath"]
-position = Vector2(950, 1177)
+position = Vector2(950, 1171)
 shape = SubResource("RectangleShape2D_mkgxw")
 
 [node name="GameOver" parent="." instance=ExtResource("2_t8bp6")]

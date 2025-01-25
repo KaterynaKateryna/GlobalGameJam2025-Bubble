@@ -7,6 +7,13 @@ const JUMP_VELOCITY_X = -150.0
 
 var is_on_duck = false
 
+func _ready():
+	var viewport = get_viewport()
+	var screen_size = viewport.get_visible_rect().size
+	var camera = viewport.get_camera_2d()
+	
+	camera.limit_bottom = screen_size.y + 100
+
 func _physics_process(delta: float) -> void:
 	if is_on_floor():
 		velocity.x = 0
