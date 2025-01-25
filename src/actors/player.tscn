@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://ku47qk6f3af7"]
+
+[ext_resource type="Script" path="res://src/actors/player.gd" id="1_ecaj2"]
+[ext_resource type="Texture2D" uid="uid://dgfqthfi1uosu" path="res://assets/images/Rubber_duck_left.png" id="1_wmqrp"]
+[ext_resource type="Texture2D" uid="uid://cn6yoyx8uksje" path="res://assets/images/Rubber_duck_right.png" id="2_ocpgc"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_upydy"]
+radius = 262.0
+height = 560.0
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_ecaj2")
+
+[node name="Left" type="Sprite2D" parent="."]
+texture = ExtResource("1_wmqrp")
+
+[node name="Right" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_ocpgc")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visibility_layer = 2
+position = Vector2(48, -27)
+shape = SubResource("CapsuleShape2D_upydy")

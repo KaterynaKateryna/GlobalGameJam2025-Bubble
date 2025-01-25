@@ -1,9 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://b8qg05mdm1fc4"]
 
-[ext_resource type="Texture2D" uid="uid://dvgvduewao17m" path="res://assets/images/Bubble_1.png" id="1_j3bwt"]
+[ext_resource type="Texture2D" uid="uid://dvgvduewao17m" path="res://assets/images/Bubble_1.png" id="1_02w5b"]
 
 [node name="Bubble" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("1_j3bwt")
+texture = ExtResource("1_02w5b")

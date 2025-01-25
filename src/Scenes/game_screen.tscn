@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://rkrb4lohwjvx"]
+[gd_scene load_steps=5 format=3 uid="uid://rkrb4lohwjvx"]
 
 [ext_resource type="Script" path="res://src/scenes/game_screen.gd" id="1_o8eum"]
+[ext_resource type="PackedScene" uid="uid://ku47qk6f3af7" path="res://src/actors/player.tscn" id="2_13b6m"]
+[ext_resource type="Texture2D" uid="uid://2s6bbh8choxm" path="res://icon.svg" id="2_uue3g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0s1ed"]
+size = Vector2(1934, 121)
 
 [node name="GameScreen" type="Control"]
 layout_mode = 3
@@ -16,6 +21,24 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = 354.0
+offset_right = -4.0
+offset_bottom = 354.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.106267, 0.1816, 0.447099, 1)
+
+[node name="Player" parent="." instance=ExtResource("2_13b6m")]
+position = Vector2(964, 891)
+scale = Vector2(0.2, 0.2)
+
+[node name="Water" type="StaticBody2D" parent="."]
+position = Vector2(972, 1004)
+
+[node name="Sprite2D" type="Sprite2D" parent="Water"]
+scale = Vector2(14.9531, 1)
+texture = ExtResource("2_uue3g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Water"]
+shape = SubResource("RectangleShape2D_0s1ed")
