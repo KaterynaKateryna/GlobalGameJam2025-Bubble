@@ -29,4 +29,14 @@ func _physics_process(delta: float) -> void:
 func _on_bubble_detector_body_entered(body: Node2D) -> void:
 	var modifier = body.get_modifier()
 	print("bubble jumped body ", modifier)
-	pass # Replace with function body.
+	var operator = modifier.substr(0,1)
+	var operand = modifier.substr(1)
+	var operand_int = int(operand)
+	if operator == "+":
+		GameData.score += operand_int
+	if operator == "-":
+		GameData.score -= operand_int
+	if operator == "x":
+		GameData.score *= operand_int
+	if operator == "%":
+		GameData.score /= operand_int

@@ -5,6 +5,8 @@ var rng = RandomNumberGenerator.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	GameData.score = 0;
+	
 	var camera = get_viewport().get_camera_2d()
 
 	var step_x = 320;
