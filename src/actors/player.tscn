@@ -33,4 +33,13 @@ collision_mask = 4
 position = Vector2(11, 327)
 shape = SubResource("RectangleShape2D_jrmdu")
 
+[node name="DuckDetector" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="DuckCollisionShape2D" type="CollisionShape2D" parent="DuckDetector"]
+position = Vector2(11, 327)
+shape = SubResource("RectangleShape2D_jrmdu")
+
 [connection signal="body_entered" from="BubbleDetector" to="." method="_on_bubble_detector_body_entered"]
+[connection signal="body_entered" from="DuckDetector" to="." method="_on_duck_detector_body_entered"]
+[connection signal="body_exited" from="DuckDetector" to="." method="_on_duck_detector_body_exited"]

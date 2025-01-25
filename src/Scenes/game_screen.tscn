@@ -1,13 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://rkrb4lohwjvx"]
+[gd_scene load_steps=6 format=3 uid="uid://rkrb4lohwjvx"]
 
 [ext_resource type="Script" path="res://src/scenes/game_screen.gd" id="1_o8eum"]
 [ext_resource type="PackedScene" uid="uid://ku47qk6f3af7" path="res://src/actors/player.tscn" id="2_13b6m"]
 [ext_resource type="PackedScene" uid="uid://dymrhsaqqai34" path="res://src/UI/user_interface.tscn" id="2_h0v7u"]
 [ext_resource type="Script" path="res://src/scenes/background.gd" id="2_pgld2"]
-[ext_resource type="Texture2D" uid="uid://2s6bbh8choxm" path="res://icon.svg" id="2_uue3g"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0s1ed"]
-size = Vector2(1934, 121)
+[ext_resource type="PackedScene" uid="uid://d2x68a7kijbdp" path="res://src/objects/duck.tscn" id="4_ebgfn"]
 
 [node name="GameScreen" type="Control"]
 layout_mode = 3
@@ -36,16 +33,8 @@ grow_vertical = 2
 color = Color(0.106267, 0.1816, 0.447099, 1)
 script = ExtResource("2_pgld2")
 
+[node name="Duck" parent="." instance=ExtResource("4_ebgfn")]
+
 [node name="Player" parent="." instance=ExtResource("2_13b6m")]
-position = Vector2(964, 474)
+position = Vector2(826, 753)
 scale = Vector2(0.3, 0.3)
-
-[node name="Water" type="StaticBody2D" parent="."]
-position = Vector2(969, 652)
-
-[node name="Sprite2D" type="Sprite2D" parent="Water"]
-scale = Vector2(14.9531, 1)
-texture = ExtResource("2_uue3g")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Water"]
-shape = SubResource("RectangleShape2D_0s1ed")

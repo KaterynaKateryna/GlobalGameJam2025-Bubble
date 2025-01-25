@@ -5,10 +5,15 @@ const SPEED = 400.0
 const JUMP_VELOCITY_Y = -800.0
 const JUMP_VELOCITY_X = -150.0
 
+var is_on_duck = false
+
 func _physics_process(delta: float) -> void:
-	
 	if is_on_floor():
 		velocity.x = 0
+		
+	if is_on_duck:
+		var duck = get_tree().root.get_node("GameScreen/Duck")
+		velocity.x = duck.velocity.x
 	
 	# Add the gravity.
 	if not is_on_floor():
@@ -40,3 +45,10 @@ func _on_bubble_detector_body_entered(body: Node2D) -> void:
 		GameData.score *= operand_int
 	if operator == "%":
 		GameData.score /= operand_int
+
+
+func _on_duck_detector_body_entered(body: Node2D) -> void:
+	is_on_duck = true
+
+func _on_duck_detector_body_exited(body: Node2D) -> void:
+	is_on_duck = false
