@@ -37,8 +37,8 @@ color = Color(0.106267, 0.1816, 0.447099, 1)
 script = ExtResource("2_pgld2")
 
 [node name="Player" parent="." instance=ExtResource("2_13b6m")]
-position = Vector2(961, 539)
-scale = Vector2(0.2, 0.2)
+position = Vector2(964, 474)
+scale = Vector2(0.3, 0.3)
 
 [node name="Water" type="StaticBody2D" parent="."]
 position = Vector2(969, 652)

@@ -1,40 +1,36 @@
-[gd_scene load_steps=6 format=3 uid="uid://ku47qk6f3af7"]
+[gd_scene load_steps=5 format=3 uid="uid://ku47qk6f3af7"]
 
 [ext_resource type="Script" path="res://src/actors/player.gd" id="1_ecaj2"]
-[ext_resource type="Texture2D" uid="uid://dgfqthfi1uosu" path="res://assets/images/Rubber_duck_left.png" id="1_wmqrp"]
-[ext_resource type="Texture2D" uid="uid://cn6yoyx8uksje" path="res://assets/images/Rubber_duck_right.png" id="2_ocpgc"]
+[ext_resource type="Texture2D" uid="uid://c660a8jhx5lf5" path="res://assets/images/Character_front.png" id="2_trqu5"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ffgw"]
-size = Vector2(491.25, 68.25)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qcwey"]
+radius = 162.0
+height = 638.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jrmdu"]
-size = Vector2(433, 1)
+size = Vector2(218, 4)
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_ecaj2")
 
-[node name="Left" type="Sprite2D" parent="."]
-texture = ExtResource("1_wmqrp")
-
-[node name="Right" type="Sprite2D" parent="."]
-visible = false
-texture = ExtResource("2_ocpgc")
+[node name="Normal" type="Sprite2D" parent="."]
+texture = ExtResource("2_trqu5")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visibility_layer = 2
-position = Vector2(60.625, 212)
-shape = SubResource("RectangleShape2D_2ffgw")
+position = Vector2(5, 5)
+shape = SubResource("CapsuleShape2D_qcwey")
 
 [node name="BubbleDetector" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 4
 
 [node name="BubbleCollisionShape2D" type="CollisionShape2D" parent="BubbleDetector"]
-position = Vector2(57.5, 255.5)
+position = Vector2(11, 327)
 shape = SubResource("RectangleShape2D_jrmdu")
 
 [connection signal="body_entered" from="BubbleDetector" to="." method="_on_bubble_detector_body_entered"]
