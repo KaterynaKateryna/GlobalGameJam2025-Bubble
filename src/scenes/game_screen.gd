@@ -2,6 +2,8 @@ extends Control
 
 var bubble_scene = preload("res://src/objects/bubble.tscn")
 
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var screen_size = get_viewport().get_visible_rect().size
