@@ -25,3 +25,8 @@ func _physics_process(delta: float) -> void:
 			velocity.x = velocity.x * -1.0
 
 	move_and_slide()
+
+func _on_bubble_detector_body_entered(body: Node2D) -> void:
+	var modifier = body.get_modifier()
+	print("bubble jumped body ", modifier)
+	pass # Replace with function body.
