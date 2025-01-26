@@ -5,6 +5,7 @@ var rng = RandomNumberGenerator.new()
 
 @onready var player = get_node("Player")
 @onready var game_over_player = get_node("GameOverPlayer")
+@onready var next_level_player = get_node("NextLevelPlayer")
 
 var top_row_y;
 var bubbles_mid_x;
@@ -14,7 +15,9 @@ var bubbles_step_y = 320;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	GameData.next_level()
 	GameData.game_over.connect(_on_game_over)
+	GameData.score_updated.connect(_check_end_level)
 	
 	GameData.score = 0;
 	
@@ -56,7 +59,10 @@ func _get_random_modifier():
 	var rand = rng.randf_range(0, 1)
 	
 	if rand < 0.5:
-		return "+1"
+		if rand < 0.4:
+			return "+1"
+		else:
+			return "-1"
 		
 	var modifier
 	var rand_modifier = rng.randi_range(0, 3)
@@ -72,7 +78,19 @@ func _get_random_modifier():
 	
 func _on_game_over():
 	print("game over")
-	var game_over = get_node("GameOver")
-	game_over.show()
+	var overlay = get_node("Overlay")
+	overlay.gamestate = "game_over"
+	overlay.show()
 	game_over_player.play()
+	
+func _check_end_level():
+	if GameData.score == GameData.goal:
+		var overlay = get_node("Overlay")
+		if GameData.level == GameData.levels.size() - 1:
+			overlay.gamestate = "game_won"
+		else:
+			overlay.gamestate = "next_level"
+		overlay.show()
+		next_level_player.play()
+	
 	
