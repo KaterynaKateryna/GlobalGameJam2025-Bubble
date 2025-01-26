@@ -4,6 +4,7 @@ var bubble_scene = preload("res://src/objects/bubble.tscn")
 var rng = RandomNumberGenerator.new()
 
 @onready var player = get_node("Player")
+@onready var game_over_player = get_node("GameOverPlayer")
 
 var top_row_y;
 var bubbles_mid_x;
@@ -55,7 +56,7 @@ func _get_random_modifier():
 	var rand = rng.randf_range(0, 1)
 	
 	if rand < 0.5:
-		return null
+		return "+1"
 		
 	var modifier
 	var rand_modifier = rng.randi_range(0, 3)
@@ -73,4 +74,5 @@ func _on_game_over():
 	print("game over")
 	var game_over = get_node("GameOver")
 	game_over.show()
+	game_over_player.play()
 	

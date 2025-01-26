@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://0sxg1xod8ndv"]
+[gd_scene load_steps=3 format=3 uid="uid://0sxg1xod8ndv"]
 
 [ext_resource type="Script" path="res://src/scenes/start_screen.gd" id="1_e1qkf"]
+[ext_resource type="PackedScene" uid="uid://x6hjjit5opel" path="res://src/audio/audio_stream_player_loop.tscn" id="2_015oo"]
 
 [node name="StartScreen" type="Control"]
 layout_mode = 3
@@ -43,5 +44,8 @@ anchor_right = 0.6
 anchor_bottom = 0.7
 theme_override_font_sizes/font_size = 48
 text = "Play"
+
+[node name="Background_theme" parent="." instance=ExtResource("2_015oo")]
+volume_db = -20.0
 
 [connection signal="button_up" from="Button" to="." method="_on_button_button_up"]

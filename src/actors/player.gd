@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+@onready var bubble_pop = get_node("BubblePop")
 
 const SPEED = 400.0
 const JUMP_VELOCITY_Y = -900.0
@@ -89,6 +90,7 @@ func _on_bubble_detector_body_entered(body: Node2D) -> void:
 func _on_bubble_detector_body_exited(body: Node2D) -> void:
 	if is_on_bubble and bubble:
 		is_on_bubble = false
+		bubble_pop.play()
 		bubble.queue_free()	
 		bubble = null
 

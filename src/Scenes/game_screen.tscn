@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://rkrb4lohwjvx"]
+[gd_scene load_steps=12 format=3 uid="uid://rkrb4lohwjvx"]
 
 [ext_resource type="Script" path="res://src/scenes/game_screen.gd" id="1_o8eum"]
 [ext_resource type="PackedScene" uid="uid://ku47qk6f3af7" path="res://src/actors/player.tscn" id="2_13b6m"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://c4st462770nct" path="res://assets/images/Background_dark.png" id="3_gvbv6"]
 [ext_resource type="PackedScene" uid="uid://d2x68a7kijbdp" path="res://src/objects/duck.tscn" id="4_ebgfn"]
 [ext_resource type="Texture2D" uid="uid://bhik1nw33sy1e" path="res://assets/images/Full_bath_wide.png" id="7_qhn0j"]
+[ext_resource type="PackedScene" uid="uid://x6hjjit5opel" path="res://src/audio/audio_stream_player_loop.tscn" id="9_ohsgr"]
+[ext_resource type="AudioStream" uid="uid://b0oo3kta7ckqd" path="res://assets/sound/water-bubbles.mp3" id="10_aoq5k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mkgxw"]
 size = Vector2(1908, 46)
@@ -64,3 +66,10 @@ shape = SubResource("RectangleShape2D_mkgxw")
 [node name="GameOver" parent="." instance=ExtResource("2_t8bp6")]
 visible = false
 layout_mode = 1
+
+[node name="Background_theme" parent="." instance=ExtResource("9_ohsgr")]
+volume_db = -10.0
+
+[node name="GameOverPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_aoq5k")
+volume_db = -10.0

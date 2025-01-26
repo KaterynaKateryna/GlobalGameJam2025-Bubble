@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://ku47qk6f3af7"]
+[gd_scene load_steps=6 format=3 uid="uid://ku47qk6f3af7"]
 
 [ext_resource type="Script" path="res://src/actors/player.gd" id="1_ecaj2"]
 [ext_resource type="Texture2D" uid="uid://c660a8jhx5lf5" path="res://assets/images/Character_front.png" id="2_trqu5"]
+[ext_resource type="AudioStream" uid="uid://cppwd8jirxw57" path="res://assets/sound/bubble-pop.mp3" id="3_p4gp8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fy3sb"]
 size = Vector2(214.25, 27)
@@ -46,6 +47,10 @@ collision_mask = 8
 [node name="BathCollisionShape2D" type="CollisionShape2D" parent="BathDetector"]
 position = Vector2(11, 327)
 shape = SubResource("RectangleShape2D_jrmdu")
+
+[node name="BubblePop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_p4gp8")
+volume_db = 10.0
 
 [connection signal="body_entered" from="BubbleDetector" to="." method="_on_bubble_detector_body_entered"]
 [connection signal="body_exited" from="BubbleDetector" to="." method="_on_bubble_detector_body_exited"]
