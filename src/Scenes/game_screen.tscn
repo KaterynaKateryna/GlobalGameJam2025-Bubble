@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://rkrb4lohwjvx"]
+[gd_scene load_steps=14 format=3 uid="uid://rkrb4lohwjvx"]
 
 [ext_resource type="Script" path="res://src/scenes/game_screen.gd" id="1_o8eum"]
 [ext_resource type="PackedScene" uid="uid://ku47qk6f3af7" path="res://src/actors/player.tscn" id="2_13b6m"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bhik1nw33sy1e" path="res://assets/images/Full_bath_wide.png" id="7_qhn0j"]
 [ext_resource type="PackedScene" uid="uid://x6hjjit5opel" path="res://src/audio/audio_stream_player_loop.tscn" id="9_ohsgr"]
 [ext_resource type="AudioStream" uid="uid://b0oo3kta7ckqd" path="res://assets/sound/water-bubbles.mp3" id="10_aoq5k"]
+[ext_resource type="AudioStream" uid="uid://bsmg7umysx34c" path="res://assets/sound/menu-sound.wav" id="10_vihce"]
 [ext_resource type="AudioStream" uid="uid://nlktkgbgcllm" path="res://assets/sound/harp-transition.mp3" id="11_vrrs1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mkgxw"]
@@ -69,6 +70,7 @@ visible = false
 layout_mode = 1
 
 [node name="Background_theme" parent="." instance=ExtResource("9_ohsgr")]
+stream = ExtResource("10_vihce")
 volume_db = -10.0
 
 [node name="GameOverPlayer" type="AudioStreamPlayer" parent="."]
