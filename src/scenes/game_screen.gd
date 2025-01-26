@@ -3,21 +3,42 @@ extends Control
 var bubble_scene = preload("res://src/objects/bubble.tscn")
 var rng = RandomNumberGenerator.new()
 
+@onready var player = get_node("Player")
+
+var top_row_y;
+var bubbles_mid_x;
+
+var bubbles_step_x = 320;
+var bubbles_step_y = 320;
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	GameData.game_over.connect(_on_game_over)
 	
 	GameData.score = 0;
 	
-	var camera = get_viewport().get_camera_2d()
-
-	var step_x = 320;
-	var step_y = 320;
-	for i in range(3):
-		var y = camera.global_position.y - i * step_y - 180;
-		_create_bubble(camera.global_position.x, y, _get_random_modifier())  
-		_create_bubble(camera.global_position.x - step_x, y, _get_random_modifier())
-		_create_bubble(camera.global_position.x + step_x, y, _get_random_modifier())
+	var viewport = get_viewport()
+	var screen_size = viewport.get_visible_rect().size
+	var camera = viewport.get_camera_2d()
+	
+	var rows_init = screen_size.y / bubbles_step_y
+	
+	bubbles_mid_x = camera.global_position.x
+	for i in range(rows_init):
+		var y = camera.global_position.y - i * bubbles_step_y - 180;
+		_spawn_row_of_bubbles(bubbles_mid_x, y)
+		
+	player.jumped_on_bubble.connect(_spawn_more_bubbles)
+	
+func _spawn_more_bubbles():
+	var y = top_row_y - bubbles_step_y
+	_spawn_row_of_bubbles(bubbles_mid_x, y)
+	
+func _spawn_row_of_bubbles(bubbles_mid_x, y):
+	_create_bubble(bubbles_mid_x, y, _get_random_modifier())  
+	_create_bubble(bubbles_mid_x - bubbles_step_x, y, _get_random_modifier())
+	_create_bubble(bubbles_mid_x + bubbles_step_x, y, _get_random_modifier())
+	top_row_y = y
 			
 			
 func _create_bubble(x: float, y: float, modifier):

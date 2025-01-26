@@ -48,6 +48,9 @@ func _on_tween_finished():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	
+	_check_if_visible()
+	
 	# Calculate velocity by comparing the position change
 	var delta_position = position - previous_position
 	velocity = delta_position / delta  # Velocity = distance / time (frame time)
@@ -55,6 +58,19 @@ func _process(delta):
 	# Update previous_position for next frame
 	previous_position = position
 	
+func _check_if_visible():
+	var camera = get_viewport().get_camera_2d()
+	if camera:
+		var margin = 600
+		var viewport_rect = Rect2(
+			camera.global_position - get_viewport().get_visible_rect().size / 2 - Vector2(margin, margin),
+			get_viewport().get_visible_rect().size + Vector2(margin * 2, margin * 2)
+		)
+
+		if not viewport_rect.has_point(global_position) and global_position.y > camera.global_position.y:
+			print("removed %s camera %s" % [global_position.y, camera.global_position.y])
+			queue_free()
+			
 func get_modifier():
 	if modifier:
 		return modifier
