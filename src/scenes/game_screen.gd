@@ -73,7 +73,7 @@ func _get_random_modifier():
 	elif rand_modifier == 2:
 		modifier = "x20"
 	elif rand_modifier == 3:
-		modifier = "%2"
+		modifier = "÷2"
 	return modifier
 	
 func _on_game_over():

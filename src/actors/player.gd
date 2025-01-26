@@ -84,7 +84,7 @@ func _on_bubble_detector_body_entered(body: Node2D) -> void:
 		GameData.score -= operand_int
 	if operator == "x":
 		GameData.score *= operand_int
-	if operator == "%":
+	if operator == "÷":
 		GameData.score /= operand_int
 		
 func _on_bubble_detector_body_exited(body: Node2D) -> void:
