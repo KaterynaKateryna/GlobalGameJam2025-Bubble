@@ -12,7 +12,7 @@ func _ready():
 	var screen_size = viewport.get_visible_rect().size
 	var camera = viewport.get_camera_2d()
 	
-	camera.limit_bottom = screen_size.y + 200
+	camera.limit_bottom = screen_size.y + 300
 
 func _physics_process(delta: float) -> void:
 	if is_on_floor():
